@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  life-tracker-pg:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: life-tracker
+    volumes:
+      - "./data:/var/lib/postgresql/data/"
+  life-tracker-be:
+    image: freefly19/life-tracker-temp
+    restart: always
+    environment:
+      JDBC_URL: jdbc:postgresql://life-tracker-pg/life-tracker
+    ports:
+      - 80:9090

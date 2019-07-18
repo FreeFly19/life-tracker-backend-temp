@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+  life-tracker:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: life-tracker
+    volumes:
+      - "./data:/var/lib/postgresql/data/"
+    ports:
+      - 5433:5432
